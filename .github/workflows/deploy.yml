@@ -18,7 +18,7 @@ jobs:
           echo $THEME_NAME
 
       - name: 'Upload Theme'
-        uses: ../actions/upload-theme
+        uses: ./.github/actions/upload-theme
         with:
           api-url: ${{ secrets.GHOST_ADMIN_API_URL }}
           api-key: ${{ secrets.GHOST_ADMIN_API_KEY }}
