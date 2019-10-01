@@ -12,6 +12,6 @@ jobs:
 
       - name: Create Zip
         run: |
-        THEME_NAME=$(jq -r '.name' package.json)
-        echo $THEME_NAME
-        zip -r $THEME_NAME.zip . -x '*node_modules*' '*.git*' '*\.zip' routes.yaml redirects.yaml redirects.json
+          THEME_NAME=$(jq -r '.name' package.json)
+          echo $THEME_NAME
+          zip -r $THEME_NAME.zip . -x '*node_modules*' '*.git*' '*\.zip' routes.yaml redirects.yaml redirects.json
