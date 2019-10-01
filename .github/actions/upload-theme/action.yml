@@ -12,5 +12,5 @@ inputs:
     description: 'API Key'
     required: true
 runs:
-  using: 'node10'
+  using: 'node12'
   main: 'dist/index.js'
