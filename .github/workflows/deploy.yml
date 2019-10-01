@@ -11,7 +11,15 @@ jobs:
       - uses: actions/checkout@master
 
       - name: Create Zip
+        id: zip
         run: |
           THEME_NAME=$(jq -r '.name' package.json)
-          echo $THEME_NAME
           zip -r $THEME_NAME.zip . -x '*node_modules*' '*.git*' '*\.zip' routes.yaml redirects.yaml redirects.json
+          echo $THEME_NAME
+
+      - name: 'Upload Theme'
+        uses: ../actions/upload-theme
+        with:
+          api-url: ${{ secrets.GHOST_ADMIN_API_URL }}
+          api-key: ${{ secrets.GHOST_ADMIN_API_KEY }}
+          zip-path: ${{steps.zip.outputs.result}}

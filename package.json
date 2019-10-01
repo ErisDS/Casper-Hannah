@@ -12,6 +12,7 @@
         "posts_per_page": 8
     },
     "devDependencies": {
+        "@tryghost/admin-api": "0.5.4",
         "gscan": "2.9.0"
     },
     "scripts": {
