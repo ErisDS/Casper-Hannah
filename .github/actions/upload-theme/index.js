@@ -1,5 +1,8 @@
 const core = require('@actions/core');
 const GhostAdminApi = require('@tryghost/admin-api');
+const pkg = require('./package.json');
+
+console.log(pkg, pkg.name);
 
 const api = new GhostAdminApi({
     url: core.getInput('api-url'),
