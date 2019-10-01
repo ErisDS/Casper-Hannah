@@ -1,9 +1,10 @@
 const core = require('@actions/core');
-const path = require('path');
 const GhostAdminApi = require('@tryghost/admin-api');
 
-const pkgPath = `${process.cwd()}/package.json`;
-console.log('cwd', process.cwd(), pkgPath);
+
+console.log('zip-path', core.getInput('zip-path'));
+const pkgPath = `${process.pwd()}/package.json`;
+console.log('cwd', process.pwd(), pkgPath);
 const pkg = require(pkgPath);
 console.log('pkg', pkg.name);
 

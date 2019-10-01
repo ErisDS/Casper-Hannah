@@ -9,14 +9,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@master
-
-      - name: Create Zip
-        id: zip
-        run: |
-          THEME_NAME=$(jq -r '.name' package.json)
-          zip -r $THEME_NAME.zip . -x '*node_modules*' '*.git*' '*\.zip' routes.yaml redirects.yaml redirects.json
-          echo $THEME_NAME
-
       - name: 'Upload Theme'
         uses: ./.github/actions/upload-theme
         with:

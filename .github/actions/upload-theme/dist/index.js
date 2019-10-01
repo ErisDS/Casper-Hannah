@@ -358,12 +358,13 @@ module.exports = __webpack_require__(93);
 /***/ (function(__unusedmodule, __unusedexports, __webpack_require__) {
 
 const core = __webpack_require__(173);
-const path = __webpack_require__(622);
 const GhostAdminApi = __webpack_require__(169);
 
-const pkgPath = __webpack_require__.ab + "package.json";
-console.log('cwd', process.cwd(), __webpack_require__.ab + "package.json");
-const pkg = __webpack_require__(967);
+
+console.log('zip-path', core.getInput('zip-path'));
+const pkgPath = `${process.pwd()}/package.json`;
+console.log('cwd', process.pwd(), pkgPath);
+const pkg = require(pkgPath);
 console.log('pkg', pkg.name);
 
 const api = new GhostAdminApi({
@@ -10388,13 +10389,6 @@ function plural(ms, msAbs, n, name) {
   return Math.round(ms / n) + ' ' + name + (isPlural ? 's' : '');
 }
 
-
-/***/ }),
-
-/***/ 967:
-/***/ (function(module) {
-
-module.exports = {"name":"casper-hannah","version":"1.0.0","author":{"name":"Hannah Wolfe","email":"erisds@gmail.com"},"keywords":["ghost-theme"],"config":{"posts_per_page":8},"devDependencies":{"@actions/core":"1.1.2","@tryghost/admin-api":"0.5.4","gscan":"2.9.0"},"scripts":{"test":"gscan .","action":"ncc build .github/actions/upload-theme/index.js && mv dist/index.js .github/actions/upload-theme/dist/index.js"}};
 
 /***/ }),
 
