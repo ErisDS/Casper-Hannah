@@ -7,8 +7,12 @@ const api = new GhostAdminApi({
     version: 'canary'
 });
 
+const zipPath = core.getInput('zip-path');
+console.log(process.cwd());
+console.log(zipPath);
+
 api.themes
-    .upload({file: core.getInput('zip-path')})
+    .upload({file: zipPath})
     .then(() => {
         console.log('SUCCESS');
     })

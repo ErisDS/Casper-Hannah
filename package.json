@@ -17,6 +17,7 @@
         "gscan": "2.9.0"
     },
     "scripts": {
-        "test": "gscan ."
+        "test": "gscan .",
+        "action": "ncc build .github/actions/upload-theme/index.js && mv dist/index.js .github/actions/upload-theme/dist/index.js"
     }
 }
