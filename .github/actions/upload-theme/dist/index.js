@@ -359,9 +359,10 @@ module.exports = __webpack_require__(93);
 
 const core = __webpack_require__(173);
 const GhostAdminApi = __webpack_require__(169);
-const pkg = __webpack_require__(990);
+// const pkg = require('./package.json');
 
-console.log(pkg, pkg.name);
+console.log('cwd', process.cwd());
+// console.log(pkg, pkg.name);
 
 const api = new GhostAdminApi({
     url: core.getInput('api-url'),
@@ -370,7 +371,7 @@ const api = new GhostAdminApi({
 });
 
 const zipPath = core.getInput('zip-path');
-console.log(process.cwd());
+
 console.log(zipPath);
 
 api.themes
@@ -10412,14 +10413,6 @@ module.exports = function transformData(data, headers, fns) {
 
   return data;
 };
-
-
-/***/ }),
-
-/***/ 990:
-/***/ (function() {
-
-eval("require")("./package.json");
 
 
 /***/ })

@@ -1,8 +1,9 @@
 const core = require('@actions/core');
 const GhostAdminApi = require('@tryghost/admin-api');
-const pkg = require('./package.json');
+// const pkg = require('./package.json');
 
-console.log(pkg, pkg.name);
+console.log('cwd', process.cwd());
+// console.log(pkg, pkg.name);
 
 const api = new GhostAdminApi({
     url: core.getInput('api-url'),
@@ -11,7 +12,7 @@ const api = new GhostAdminApi({
 });
 
 const zipPath = core.getInput('zip-path');
-console.log(process.cwd());
+
 console.log(zipPath);
 
 api.themes
