@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@actions/core@1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@actions/core/-/core-1.1.2.tgz#f1a0f1b0f3c630896e006846b8ceaaf47c481781"
+  integrity sha512-l8Ol2wEzFeuhV1v7LbGB2x8ghXSnmUiSVKVSjsNwgqAU4i5LvGRXpM+kli9gNMkGVudwZYHET4qZ5DTep5Sssw==
+
 "@tryghost/admin-api@0.5.4":
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/@tryghost/admin-api/-/admin-api-0.5.4.tgz#32cc1c7e8c1a8513c59e477a65f047a25a1fffa5"
