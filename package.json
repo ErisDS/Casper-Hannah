@@ -5,8 +5,16 @@
         "name": "Hannah Wolfe",
         "email": "erisds@gmail.com"
     },
-    "keywords": ["ghost-theme"],
+    "keywords": [
+        "ghost-theme"
+    ],
     "config": {
         "posts_per_page": 8
+    },
+    "devDependencies": {
+        "gscan": "2.9.0"
+    },
+    "scripts": {
+        "test": "gscan ."
     }
 }
