@@ -585,6 +585,8 @@ const GhostAdminApi = __webpack_require__(169);
     console.log(process.env.GITHUB_WORKSPACE);
     const pkgPath = `${process.env.GITHUB_WORKSPACE}/package.json`;
     console.log(pkgPath);
+    let themeName = require(pkgPath).name;
+    console.log(themeName);
 
     // api.themes
     //     .upload({file: zipPath})

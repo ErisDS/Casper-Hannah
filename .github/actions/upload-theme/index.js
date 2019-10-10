@@ -21,6 +21,8 @@ const GhostAdminApi = require('@tryghost/admin-api');
     console.log(process.env.GITHUB_WORKSPACE);
     const pkgPath = `${process.env.GITHUB_WORKSPACE}/package.json`;
     console.log(pkgPath);
+    let themeName = require(pkgPath).name;
+    console.log(themeName);
 
     // api.themes
     //     .upload({file: zipPath})
