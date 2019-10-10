@@ -1,3 +1,4 @@
+const path = require('path');
 const core = require('@actions/core');
 const github = require('@actions/github');
 const GhostAdminApi = require('@tryghost/admin-api');
@@ -18,11 +19,14 @@ const GhostAdminApi = require('@tryghost/admin-api');
 //    const zipPath = core.getInput('zip-path');
 
     console.log(github);
-    console.log(process.env.GITHUB_WORKSPACE);
-    const pkgPath = `${process.env.GITHUB_WORKSPACE}/package.json`;
+    let basePath = process.env.GITHUB_WORKSPACE;
+    console.log(basePath);
+    const pkgPath = path.join(process.env.GITHUB_WORKSPACE, 'package.json');
     console.log(pkgPath);
     let themeName = require(pkgPath).name;
     console.log(themeName);
+    let themePath = path.join(basePath, themeName);
+    console.log(themePath);
 
     // api.themes
     //     .upload({file: zipPath})

@@ -562,6 +562,7 @@ function getPreviousPage (octokit, link, headers) {
 /***/ 53:
 /***/ (function(__unusedmodule, __unusedexports, __webpack_require__) {
 
+const path = __webpack_require__(622);
 const core = __webpack_require__(173);
 const github = __webpack_require__(699);
 const GhostAdminApi = __webpack_require__(169);
@@ -582,11 +583,14 @@ const GhostAdminApi = __webpack_require__(169);
 //    const zipPath = core.getInput('zip-path');
 
     console.log(github);
-    console.log(process.env.GITHUB_WORKSPACE);
-    const pkgPath = `${process.env.GITHUB_WORKSPACE}/package.json`;
+    let basePath = process.env.GITHUB_WORKSPACE;
+    console.log(basePath);
+    const pkgPath = path.join(process.env.GITHUB_WORKSPACE, 'package.json');
     console.log(pkgPath);
     let themeName = require(pkgPath).name;
     console.log(themeName);
+    let themePath = path.join(basePath, themeName);
+    console.log(themePath);
 
     // api.themes
     //     .upload({file: zipPath})
