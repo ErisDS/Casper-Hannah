@@ -26,7 +26,7 @@ const GhostAdminApi = require('@tryghost/admin-api');
 
     // zip -r $THEME_NAME.zip . -x '*node_modules*' '*.git*' '*\.zip' routes.yaml redirects.yaml redirects.json
 
-    let res = await exec.exec('zip', ['-r', $themeZip, '.'], {cwd: basePath});
+    let res = await exec.exec('zip', ['-r', themeZip, '.'], {cwd: basePath});
     console.log(res);
 
     // api.themes
