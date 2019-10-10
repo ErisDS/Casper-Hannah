@@ -21,6 +21,7 @@
         "build": "ncc build .github/actions/upload-theme/index.js && mv dist/index.js .github/actions/upload-theme/dist/index.js"
     },
     "dependencies": {
+        "@actions/exec": "^1.0.1",
         "@actions/github": "^1.1.0"
     }
 }

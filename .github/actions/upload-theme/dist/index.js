@@ -580,19 +580,17 @@ const GhostAdminApi = __webpack_require__(169);
     //     version: 'canary'
     // });
 
-//    const zipPath = core.getInput('zip-path');
 
-    console.log(github);
-    let basePath = process.env.GITHUB_WORKSPACE;
-    console.log(basePath);
+    const basePath = process.env.GITHUB_WORKSPACE;
     const pkgPath = path.join(process.env.GITHUB_WORKSPACE, 'package.json');
-    console.log(pkgPath);
-    let themeName = require(pkgPath).name;
-    console.log(themeName);
-    let zipName = `${themeName}.zip`;
-    console.log(zipName);
-    let themePath = path.join(basePath, zipName);
-    console.log(themePath);
+    const themeName = require(pkgPath).name;
+    const themeZip = `${themeName}.zip`;
+    // const themePath = path.join(basePath, themeZip);
+
+    // zip -r $THEME_NAME.zip . -x '*node_modules*' '*.git*' '*\.zip' routes.yaml redirects.yaml redirects.json
+
+    let res = await exec.exec('zip', ['-r', $themeZip, '.'], {cwd: basePath});
+    console.log(res);
 
     // api.themes
     //     .upload({file: zipPath})
