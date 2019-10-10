@@ -25,7 +25,9 @@ const GhostAdminApi = require('@tryghost/admin-api');
     console.log(pkgPath);
     let themeName = require(pkgPath).name;
     console.log(themeName);
-    let themePath = path.join(basePath, themeName);
+    let zipName = `${themeName}.zip`;
+    console.log(zipName);
+    let themePath = path.join(basePath, zipName);
     console.log(themePath);
 
     // api.themes

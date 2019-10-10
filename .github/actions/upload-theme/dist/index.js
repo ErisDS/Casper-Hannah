@@ -589,7 +589,9 @@ const GhostAdminApi = __webpack_require__(169);
     console.log(pkgPath);
     let themeName = require(pkgPath).name;
     console.log(themeName);
-    let themePath = path.join(basePath, themeName);
+    let zipName = `${themeName}.zip`;
+    console.log(zipName);
+    let themePath = path.join(basePath, zipName);
     console.log(themePath);
 
     // api.themes
