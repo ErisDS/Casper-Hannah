@@ -1,16 +1,15 @@
 name: 'Upload Theme'
 description: 'Upload theme to your site'
 inputs:
-  zip-path:
-    description: 'Path to Zip'
-    required: true
-    default: 'theme.zip'
   api-url:
     description: 'API Url'
     required: true
   api-key:
     description: 'API Key'
     required: true
+  zip-path:
+    description: 'Path to Zip'
+    required: false
 runs:
   using: 'node12'
   main: 'dist/index.js'
