@@ -581,7 +581,7 @@ const GhostAdminApi = __webpack_require__(169);
 
 //    const zipPath = core.getInput('zip-path');
 
-    console.log(github.context);
+    console.log(github.workspace);
 
     // api.themes
     //     .upload({file: zipPath})
