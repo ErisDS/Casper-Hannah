@@ -361,31 +361,35 @@ const core = __webpack_require__(173);
 const GhostAdminApi = __webpack_require__(169);
 
 
-console.log('zip-path', core.getInput('zip-path'));
-const pkgPath = `${process.pwd()}/package.json`;
-console.log('cwd', process.pwd(), pkgPath);
-const pkg = require(pkgPath);
-console.log('pkg', pkg.name);
+(async function main() {
 
-const api = new GhostAdminApi({
-    url: core.getInput('api-url'),
-    key: core.getInput('api-key'),
-    version: 'canary'
-});
+    console.log('zip-path', core.getInput('zip-path'));
+    const pkgPath = __webpack_require__.ab + "package.json";
+    console.log('cwd', process.cwd(), __webpack_require__.ab + "package.json");
+    const pkg = __webpack_require__(967);
+    console.log('pkg', pkg.name);
 
-const zipPath = core.getInput('zip-path');
-
-console.log(zipPath);
-
-api.themes
-    .upload({file: zipPath})
-    .then(() => {
-        console.log('SUCCESS');
-    })
-    .catch((err) => {
-        console.error(err);
-        process.exit(1);
+    const api = new GhostAdminApi({
+        url: core.getInput('api-url'),
+        key: core.getInput('api-key'),
+        version: 'canary'
     });
+
+    const zipPath = core.getInput('zip-path');
+
+    console.log(zipPath);
+
+    // api.themes
+    //     .upload({file: zipPath})
+    //     .then(() => {
+    //         console.log('SUCCESS');
+    //     })
+    //     .catch((err) => {
+    //         console.error(err);
+    //         process.exit(1);
+    //     });
+
+}())
 
 /***/ }),
 
@@ -10389,6 +10393,13 @@ function plural(ms, msAbs, n, name) {
   return Math.round(ms / n) + ' ' + name + (isPlural ? 's' : '');
 }
 
+
+/***/ }),
+
+/***/ 967:
+/***/ (function(module) {
+
+module.exports = {"name":"casper-hannah","version":"1.0.0","author":{"name":"Hannah Wolfe","email":"erisds@gmail.com"},"keywords":["ghost-theme"],"config":{"posts_per_page":8},"devDependencies":{"@actions/core":"1.1.2","@tryghost/admin-api":"0.5.4","gscan":"2.9.0"},"scripts":{"test":"gscan .","action":"ncc build .github/actions/upload-theme/index.js && mv dist/index.js .github/actions/upload-theme/dist/index.js"}};
 
 /***/ }),
 
