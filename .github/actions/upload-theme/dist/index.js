@@ -605,29 +605,21 @@ const github = __webpack_require__(699);
 const GhostAdminApi = __webpack_require__(169);
 
 (async function main() {
-    // console.log('zip-path', core.getInput('zip-path'));
-    // const pkgPath = `${process.cwd()}/package.json`;
-    // console.log('cwd', process.cwd(), pkgPath);
-    // const pkg = require(pkgPath);
-    // console.log('pkg', pkg.name);
-
-    // const api = new GhostAdminApi({
-    //     url: core.getInput('api-url'),
-    //     key: core.getInput('api-key'),
-    //     version: 'canary'
-    // });
-
+    const api = new GhostAdminApi({
+        url: core.getInput('api-url'),
+        key: core.getInput('api-key'),
+        version: 'canary'
+    });
 
     const basePath = process.env.GITHUB_WORKSPACE;
     const pkgPath = path.join(process.env.GITHUB_WORKSPACE, 'package.json');
     const themeName = require(pkgPath).name;
     const themeZip = `${themeName}.zip`;
-    // const themePath = path.join(basePath, themeZip);
+    const zipPath = path.join(basePath, themeZip);
 
     // zip -r $THEME_NAME.zip . -x '*node_modules*' '*.git*' '*\.zip' routes.yaml redirects.yaml redirects.json
 
-    let res = await exec.exec('zip', ['-r', themeZip, '.', '-x *node_modules* *.git* *\.zip routes.yaml redirects.yaml redirects.json'], {cwd: basePath});
-    console.log(res);
+    await exec.exec('zip', ['-r', themeZip, '.', '-x "*node_modules*" "*\.git*" *\.zip routes.yaml redirects.yaml redirects.json'], {cwd: basePath});
 
     // api.themes
     //     .upload({file: zipPath})
