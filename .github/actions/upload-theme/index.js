@@ -17,7 +17,8 @@ const GhostAdminApi = require('@tryghost/admin-api');
 
 //    const zipPath = core.getInput('zip-path');
 
-    console.log(github.workspace);
+    console.log(github);
+    console.log(process.env);
 
     // api.themes
     //     .upload({file: zipPath})
