@@ -18,6 +18,9 @@
     },
     "scripts": {
         "test": "gscan .",
-        "action": "ncc build .github/actions/upload-theme/index.js && mv dist/index.js .github/actions/upload-theme/dist/index.js"
+        "build": "ncc build .github/actions/upload-theme/index.js && mv dist/index.js .github/actions/upload-theme/dist/index.js"
+    },
+    "dependencies": {
+        "@actions/github": "^1.1.0"
     }
 }

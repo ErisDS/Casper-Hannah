@@ -1,24 +1,23 @@
 const core = require('@actions/core');
+const github = require('@actions/github');
 const GhostAdminApi = require('@tryghost/admin-api');
 
-
 (async function main() {
+    // console.log('zip-path', core.getInput('zip-path'));
+    // const pkgPath = `${process.cwd()}/package.json`;
+    // console.log('cwd', process.cwd(), pkgPath);
+    // const pkg = require(pkgPath);
+    // console.log('pkg', pkg.name);
 
-    console.log('zip-path', core.getInput('zip-path'));
-    const pkgPath = `${process.cwd()}/package.json`;
-    console.log('cwd', process.cwd(), pkgPath);
-    const pkg = require(pkgPath);
-    console.log('pkg', pkg.name);
+    // const api = new GhostAdminApi({
+    //     url: core.getInput('api-url'),
+    //     key: core.getInput('api-key'),
+    //     version: 'canary'
+    // });
 
-    const api = new GhostAdminApi({
-        url: core.getInput('api-url'),
-        key: core.getInput('api-key'),
-        version: 'canary'
-    });
+//    const zipPath = core.getInput('zip-path');
 
-    const zipPath = core.getInput('zip-path');
-
-    console.log(zipPath);
+    console.log(github.context);
 
     // api.themes
     //     .upload({file: zipPath})
