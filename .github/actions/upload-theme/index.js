@@ -1,15 +1,14 @@
 const path = require('path');
 const core = require('@actions/core');
 const exec = require('@actions/exec');
-const github = require('@actions/github');
 const GhostAdminApi = require('@tryghost/admin-api');
 
 (async function main() {
-    // const api = new GhostAdminApi({
-    //     url: core.getInput('api-url'),
-    //     key: core.getInput('api-key'),
-    //     version: 'canary'
-    // });
+    const api = new GhostAdminApi({
+        url: core.getInput('api-url'),
+        key: core.getInput('api-key'),
+        version: 'canary'
+    });
 
     const basePath = process.env.GITHUB_WORKSPACE;
     const pkgPath = path.join(process.env.GITHUB_WORKSPACE, 'package.json');
@@ -17,18 +16,16 @@ const GhostAdminApi = require('@tryghost/admin-api');
     const themeZip = `${themeName}.zip`;
     const zipPath = path.join(basePath, themeZip);
 
-    // zip -r $THEME_NAME.zip . -x '*node_modules*' '*.git*' '*\.zip' routes.yaml redirects.yaml redirects.json
 
-    await exec.exec(`zip -r ${themeZip} . -x *. *routes.yaml *redirects.yaml *redirects.json`, [], {cwd: basePath});
+    await exec.exec(`zip -r ${themeZip} . -x *.git* *.zip *routes.yaml *redirects.yaml *redirects.json`, [], {cwd: basePath});
 
-    // api.themes
-    //     .upload({file: zipPath})
-    //     .then(() => {
-    //         console.log('SUCCESS');
-    //     })
-    //     .catch((err) => {
-    //         console.error(err);
-    //         process.exit(1);
-    //     });
-
+    api.themes
+        .upload({file: zipPath})
+        .then(() => {
+            console.log('SUCCESS');
+        })
+        .catch((err) => {
+            console.error(err);
+            process.exit(1);
+        });
 }())
