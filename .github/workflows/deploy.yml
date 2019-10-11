@@ -20,9 +20,11 @@ jobs:
         id: blah
         run: echo $THEME_NAME
 
+
+      - name: 'Zip theme'
       # - name: 'Upload Theme'
-      #   uses: ./.github/actions/upload-theme
-      #   with:
+        uses: ./.github/actions/upload-theme
+        # with:
       #     api-url: ${{ secrets.GHOST_ADMIN_API_URL }}
       #     api-key: ${{ secrets.GHOST_ADMIN_API_KEY }}
       #     zip-path: ${{steps.zip.outputs.result}}
