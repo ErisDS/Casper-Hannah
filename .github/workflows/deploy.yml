@@ -12,6 +12,6 @@ jobs:
       - name: 'Upload Theme'
         uses: ./.github/actions/upload-theme
         with:
-          api-url: ${{ secrets.GHOST_ADMIN_API_URL }}
+          api-url: "https://hannah.ghost.io"
           api-key: ${{ secrets.GHOST_ADMIN_API_KEY }}
           exclude: '*gscan.yml '
