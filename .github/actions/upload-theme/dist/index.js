@@ -397,34 +397,33 @@ const path = __webpack_require__(622);
 const core = __webpack_require__(173);
 const exec = __webpack_require__(501);
 const GhostAdminApi = __webpack_require__(169);
-const url = core.getInput('api-url');
 
 (async function main() {
+    const url = core.getInput('api-url');
     const api = new GhostAdminApi({
         url,
         key: core.getInput('api-key'),
         version: 'canary'
     });
 
-    const exclude = core.getInput('exclude') || '';
     const basePath = process.env.GITHUB_WORKSPACE;
     const pkgPath = path.join(process.env.GITHUB_WORKSPACE, 'package.json');
     const themeName = require(pkgPath).name;
     const themeZip = `${themeName}.zip`;
     const zipPath = path.join(basePath, themeZip);
+    const exclude = core.getInput('exclude') || '';
 
     await exec.exec(`zip -r ${themeZip} . -x *.git* *.zip yarn* npm* *routes.yaml *redirects.yaml *redirects.json ${exclude}`, [], {cwd: basePath});
 
-    api.themes
-        .upload({file: zipPath})
-        .then(() => {
-            console.log(`Theme successfully uploaded to ${url}`);
-        })
-        .catch((err) => {
-            console.error(err);
-            process.exit(1);
-        });
-}())
+    try {
+        await api.themes.upload({file: zipPath});
+        console.log(`Theme ${themeZip} successfully uploaded to ${url}`);
+    } catch (err) {
+        console.error(err);
+        process.exit(1);
+    }
+}());
+
 
 /***/ }),
 
