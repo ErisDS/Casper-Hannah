@@ -397,10 +397,11 @@ const path = __webpack_require__(622);
 const core = __webpack_require__(173);
 const exec = __webpack_require__(501);
 const GhostAdminApi = __webpack_require__(169);
+const url = core.getInput('api-url');
 
 (async function main() {
     const api = new GhostAdminApi({
-        url: core.getInput('api-url'),
+        url,
         key: core.getInput('api-key'),
         version: 'canary'
     });
@@ -412,12 +413,12 @@ const GhostAdminApi = __webpack_require__(169);
     const themeZip = `${themeName}.zip`;
     const zipPath = path.join(basePath, themeZip);
 
-    await exec.exec(`zip -r ${themeZip} . -x *.git* *.zip *routes.yaml *redirects.yaml *redirects.json ${exclude}`, [], {cwd: basePath});
+    await exec.exec(`zip -r ${themeZip} . -x *.git* *.zip yarn* npm* *routes.yaml *redirects.yaml *redirects.json ${exclude}`, [], {cwd: basePath});
 
     api.themes
         .upload({file: zipPath})
         .then(() => {
-            console.log('SUCCESS');
+            console.log(`Theme successfully uploaded to ${url}`);
         })
         .catch((err) => {
             console.error(err);
