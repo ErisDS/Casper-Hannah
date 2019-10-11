@@ -605,11 +605,11 @@ const github = __webpack_require__(699);
 const GhostAdminApi = __webpack_require__(169);
 
 (async function main() {
-    const api = new GhostAdminApi({
-        url: core.getInput('api-url'),
-        key: core.getInput('api-key'),
-        version: 'canary'
-    });
+    // const api = new GhostAdminApi({
+    //     url: core.getInput('api-url'),
+    //     key: core.getInput('api-key'),
+    //     version: 'canary'
+    // });
 
     const basePath = process.env.GITHUB_WORKSPACE;
     const pkgPath = path.join(process.env.GITHUB_WORKSPACE, 'package.json');
