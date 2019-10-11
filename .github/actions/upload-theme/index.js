@@ -10,7 +10,7 @@ const GhostAdminApi = require('@tryghost/admin-api');
         version: 'canary'
     });
 
-    const excludes = core.getInput('exclude') || '';
+    const exclude = core.getInput('exclude') || '';
     const basePath = process.env.GITHUB_WORKSPACE;
     const pkgPath = path.join(process.env.GITHUB_WORKSPACE, 'package.json');
     const themeName = require(pkgPath).name;

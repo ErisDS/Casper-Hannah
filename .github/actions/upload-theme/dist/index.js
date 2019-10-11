@@ -405,14 +405,14 @@ const GhostAdminApi = __webpack_require__(169);
         version: 'canary'
     });
 
+    const exclude = core.getInput('exclude') || '';
     const basePath = process.env.GITHUB_WORKSPACE;
     const pkgPath = path.join(process.env.GITHUB_WORKSPACE, 'package.json');
     const themeName = require(pkgPath).name;
     const themeZip = `${themeName}.zip`;
     const zipPath = path.join(basePath, themeZip);
 
-
-    await exec.exec(`zip -r ${themeZip} . -x *.git* *.zip *routes.yaml *redirects.yaml *redirects.json`, [], {cwd: basePath});
+    await exec.exec(`zip -r ${themeZip} . -x *.git* *.zip *routes.yaml *redirects.yaml *redirects.json ${exclude}`, [], {cwd: basePath});
 
     api.themes
         .upload({file: zipPath})
