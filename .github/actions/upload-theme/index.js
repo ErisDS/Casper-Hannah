@@ -10,14 +10,14 @@ const GhostAdminApi = require('@tryghost/admin-api');
         version: 'canary'
     });
 
+    const excludes = core.getInput('exclude') || '';
     const basePath = process.env.GITHUB_WORKSPACE;
     const pkgPath = path.join(process.env.GITHUB_WORKSPACE, 'package.json');
     const themeName = require(pkgPath).name;
     const themeZip = `${themeName}.zip`;
     const zipPath = path.join(basePath, themeZip);
 
-
-    await exec.exec(`zip -r ${themeZip} . -x *.git* *.zip *routes.yaml *redirects.yaml *redirects.json`, [], {cwd: basePath});
+    await exec.exec(`zip -r ${themeZip} . -x *.git* *.zip *routes.yaml *redirects.yaml *redirects.json ${exclude}`, [], {cwd: basePath});
 
     api.themes
         .upload({file: zipPath})
