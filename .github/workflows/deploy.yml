@@ -9,22 +9,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@master
-      - name: Create Zip
-        id: zip
-        run: |
-          THEME_NAME=$(jq -r '.name' package.json)
-          zip -r $THEME_NAME.zip . -x '*node_modules*' '*.git*' '*\.zip' routes.yaml redirects.yaml redirects.json
-          echo $THEME_NAME
-          echo ::set-env name=THEME_NAME::$THEME_NAME
-      - name: BLAH
-        id: blah
-        run: echo $THEME_NAME
-
-
-      - name: 'Zip theme'
-      # - name: 'Upload Theme'
+      - name: 'Upload Theme'
         uses: ./.github/actions/upload-theme
-        # with:
-      #     api-url: ${{ secrets.GHOST_ADMIN_API_URL }}
-      #     api-key: ${{ secrets.GHOST_ADMIN_API_KEY }}
-      #     zip-path: ${{steps.zip.outputs.result}}
+        with:
+          api-url: ${{ secrets.GHOST_ADMIN_API_URL }}
+          api-key: ${{ secrets.GHOST_ADMIN_API_KEY }}
