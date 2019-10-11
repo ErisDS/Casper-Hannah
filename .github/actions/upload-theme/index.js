@@ -5,11 +5,11 @@ const github = require('@actions/github');
 const GhostAdminApi = require('@tryghost/admin-api');
 
 (async function main() {
-    const api = new GhostAdminApi({
-        url: core.getInput('api-url'),
-        key: core.getInput('api-key'),
-        version: 'canary'
-    });
+    // const api = new GhostAdminApi({
+    //     url: core.getInput('api-url'),
+    //     key: core.getInput('api-key'),
+    //     version: 'canary'
+    // });
 
     const basePath = process.env.GITHUB_WORKSPACE;
     const pkgPath = path.join(process.env.GITHUB_WORKSPACE, 'package.json');
