@@ -1,17 +1,14 @@
-name: Deploy theme
-
-on: [push]
-
+name: Deploy Theme
+on:
+  push:
+    branches:
+      - master
 jobs:
   deploy:
-
     runs-on: ubuntu-18.04
-
     steps:
       - uses: actions/checkout@master
-      - name: 'Upload Theme'
-        uses: ./.github/actions/upload-theme
+      - uses: TryGhost/action-deploy-theme@v1.0.0
         with:
-          api-url: "https://hannah.ghost.io"
+          api-url: ${{ secrets.GHOST_ADMIN_API_URL }}
           api-key: ${{ secrets.GHOST_ADMIN_API_KEY }}
-          exclude: '*gscan.yml '
