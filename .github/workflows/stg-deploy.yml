@@ -1,0 +1,15 @@
+name: Deploy Theme
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@master
+      - uses: ./.github/actions/test
+        with:
+          api-url: ${{ secrets.STG_GHOST_ADMIN_API_URL }}
+          api-key: ${{ secrets.STG_GHOST_ADMIN_API_KEY }}
