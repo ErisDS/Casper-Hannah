@@ -1,4 +1,4 @@
-name: Deploy Theme
+name: Staging Deploy Theme
 on:
   push:
     branches:
