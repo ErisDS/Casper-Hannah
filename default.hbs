@@ -27,29 +27,60 @@
     {{{body}}}
 
     <footer class="site-footer">
-        {{#if @member.paid}}
-           Thank you for being a paid member
-        {{else if @member}}
-            Thank you for subscribing
-        {{else}}
-            Maybe subscribe?
-        {{/if}}
 
-        {{#unless @member}}
-          logged out
-        {{else unless @member.paid}}
-           free
-        {{else}}
-           paid
-        {{/unless}}
+EXAMPLE 1
+<pre><code>
+{{#if @member.paid}}
+    Thank you for being a paid member
+{{else if @member}}
+    Thank you for subscribing
+{{else}}
+    Maybe subscribe?
+{{/if}}
+</code></pre>
+{{#if @member.paid}}
+    Thank you for being a paid member
+{{else if @member}}
+    Thank you for subscribing
+{{else}}
+    Maybe subscribe?
+{{/if}}
 
-         {{^if @member}}
-          logged out
-        {{else ^if @member.paid}}
-           free
-        {{else}}
-           paid
-        {{/if}}
+EXAMPLE 2
+<pre><code>
+{{#unless @member}}
+    logged out
+{{else unless @member.paid}}
+    free
+{{else}}
+    paid
+{{/unless}}
+</code></pre>
+{{#unless @member}}
+    logged out
+{{else unless @member.paid}}
+    free
+{{else}}
+    paid
+{{/unless}}
+
+Example 3
+<pre><code>
+{{^if @member}}
+  logged out
+{{else if @member.paid}}
+  paid
+{{else}}
+   free
+{{/if}}
+</code></pre>
+{{^if @member}}
+  logged out
+{{else if @member.paid}}
+  paid
+{{else}}
+   free
+{{/if}}
         <form data-members-form="signup">
             <input data-members-email type="email" required="true"/>
             <button type="submit">Continue</button>
