@@ -46,15 +46,7 @@ EXAMPLE 2
     paid
 {{/unless}}
 
-Example 3
 
-{{^if @member}}
-  logged out
-{{else ^if @member.paid}}
-  paid
-{{else}}
-   free
-{{/if}}
         <form data-members-form="signup">
             <input data-members-email type="email" required="true"/>
             <button type="submit">Continue</button>
