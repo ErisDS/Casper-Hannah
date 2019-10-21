@@ -13,3 +13,4 @@ jobs:
         with:
           api-url: ${{ secrets.STG_GHOST_ADMIN_API_URL }}
           api-key: ${{ secrets.STG_GHOST_ADMIN_API_KEY }}
+          theme-name: "my-casper"
