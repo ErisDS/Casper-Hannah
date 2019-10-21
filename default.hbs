@@ -27,6 +27,13 @@
     {{{body}}}
 
     <footer class="site-footer">
+        {{#if @member.paid}}
+           Thank you for being a paid member
+        {{else if @member}}
+            Thank you for subscribing
+        {{else}}
+            Maybe subscribe?
+        {{/if}}
         <form data-members-form="signup">
             <input data-members-email type="email" required="true"/>
             <button type="submit">Continue</button>
