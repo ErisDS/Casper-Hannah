@@ -34,6 +34,14 @@
         {{else}}
             Maybe subscribe?
         {{/if}}
+
+        {{#unless @member}}
+          logged out
+        {{else unless @member.paid}}
+           free
+        {{else}}
+           paid
+        {{/unless}}
         <form data-members-form="signup">
             <input data-members-email type="email" required="true"/>
             <button type="submit">Continue</button>
