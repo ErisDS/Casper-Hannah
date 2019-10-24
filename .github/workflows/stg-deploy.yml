@@ -9,6 +9,14 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@master
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: install and test
+        run: |
+          npm install
+          npm test
       - uses: ./.github/actions/test
         with:
           api-url: ${{ secrets.STG_GHOST_ADMIN_API_URL }}
