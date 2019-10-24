@@ -9,14 +9,14 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@master
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 12
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: install and test
+          node-version: 12
+      - name: Run gscan
         run: |
-          npm install
-          npm test
+          npm i -g gscan@latest
+          gscan -f ${{ GITHUB_WORKSPACE }}
       - uses: ./.github/actions/test
         with:
           api-url: ${{ secrets.STG_GHOST_ADMIN_API_URL }}
