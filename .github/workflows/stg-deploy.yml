@@ -16,7 +16,7 @@ jobs:
       - name: Run gscan
         run: |
           npm i -g gscan@latest
-          gscan -f ${{ GITHUB_WORKSPACE }}
+          gscan -f $GITHUB_WORKSPACE
       - uses: ./.github/actions/test
         with:
           api-url: ${{ secrets.STG_GHOST_ADMIN_API_URL }}
