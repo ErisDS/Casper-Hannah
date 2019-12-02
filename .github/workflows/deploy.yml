@@ -12,10 +12,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12
-      - name: install and test
+      - name: Run gscan
         run: |
-          npm install
-          npm test
+          npm i -g gscan@latest
+          gscan --fatal --verbose $GITHUB_WORKSPACE
       - uses: ./.github/actions/test
         with:
           api-url: ${{ secrets.GHOST_ADMIN_API_URL }}
