@@ -1,6 +1,6 @@
 # Hannah's custom Casper
 
-The default theme for [Ghost](http://github.com/tryghost/ghost/) 👻 👻
+The default theme for [Ghost](http://github.com/tryghost/ghost/) 👻 
 
 ## Copyright & License
 
