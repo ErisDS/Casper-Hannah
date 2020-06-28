@@ -1,15 +1,18 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
-inputs:
-  api-url:
-    description: 'Ghost Admin API Url'
-    required: true
-  api-key:
-    description: 'Ghost Admin API Key'
-    required: true
-  tag:
-    description: 'Update posts with this tag only'
-    required: true
+name: 'Deploy Ghost Theme'	name: 'Hello World'
+description: 'Build & deploy a theme to your Ghost site'	description: 'Greet someone and record the time'
+branding:	
+  icon: 'cloud-lightning'	
+  color: 'gray-dark'	
+inputs:	inputs:
+  api-url:	  api-url:
+    description: 'Ghost Admin API Url'	    description: 'Ghost Admin API Url'
+    required: true	    required: true
+  api-key:	  api-key:
+    description: 'Ghost Admin API Key'	    description: 'Ghost Admin API Key'
+    required: true	    required: true
+  exclude:	  tag:
+    description: 'Files or folders to exclude (space-separated list)'	    description: 'Update posts with this tag only'
+    required: false	    required: true
   field:
     description: 'Field that should be updated'
     required: true
@@ -19,6 +22,6 @@ inputs:
   days:
     description: 'Number of days after published to update the post'
     required: true
-runs:
-  using: 'node12'
+runs:	runs:
+  using: 'node12'	  using: 'node12'
   main: 'dist/index.js'
