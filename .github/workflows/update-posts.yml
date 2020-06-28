@@ -14,5 +14,5 @@ jobs:
           api-key: ${{ secrets.GHOST_ADMIN_API_KEY }}
           tag: 'hash-sponsored'
           field: 'featured'
-          value: 'false'
+          value: false
           days: 7
