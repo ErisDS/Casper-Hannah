@@ -636,6 +636,19 @@ function serial(list, iterator, callback)
 const core = __webpack_require__(470);
 const GhostAdminApi = __webpack_require__(455);
 
+// Convert boolean strings to true booleans
+const getValue = () => {
+    let value = core.getInput('value');
+
+    if (value === 'true') {
+        value = true;
+    } else if (value === 'false') {
+        value = false;
+    }
+
+    return value;
+};
+
 const calculateDaysSince = (date) => {
     const now = new Date();
     const then = new Date(date);
@@ -653,15 +666,12 @@ const calculateDaysSince = (date) => {
 
         const tag = core.getInput('tag');
         const field = core.getInput('field');
-        const value = core.getInput('value');
+        const value = getValue();
         const days = core.getInput('days');
 
-        console.log('CONFIG', tag, field, value, days);
-
         const posts = await api.posts.browse({filter: `tag:${tag}`});
-        const updates = [];
 
-        posts.forEach((post) => {
+        await Promise.all(posts.map(async (post) => {
             const differenceInDays = calculateDaysSince(post.published_at);
 
             console.log(`Post ${post.title} published ${differenceInDays} days ago`);
@@ -669,16 +679,12 @@ const calculateDaysSince = (date) => {
             // If enough days have passed, we will update the post
             if (differenceInDays > days) {
                 post[field] = value;
-                updates.push(api.posts.edit(post));
                 console.log(`Updating post ${post.title}`);
+                await api.posts.edit(post);
             } else {
                 console.log(`Not updating post ${post.title}, ${days - differenceInDays + 1} days to go`);
             }
-        });
-
-        if (updates.length > 1) {
-            return Promise.all(updates);
-        }
+        }));
     } catch (err) {
         console.error(err);
         process.exit(1);
