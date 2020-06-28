@@ -1,27 +1,24 @@
-name: 'Deploy Ghost Theme'	name: 'Hello World'
-description: 'Build & deploy a theme to your Ghost site'	description: 'Greet someone and record the time'
-branding:	
-  icon: 'cloud-lightning'	
-  color: 'gray-dark'	
-inputs:	inputs:
-  api-url:	  api-url:
-    description: 'Ghost Admin API Url'	    description: 'Ghost Admin API Url'
-    required: true	    required: true
-  api-key:	  api-key:
-    description: 'Ghost Admin API Key'	    description: 'Ghost Admin API Key'
-    required: true	    required: true
-  exclude:	  tag:
-    description: 'Files or folders to exclude (space-separated list)'	    description: 'Update posts with this tag only'
-    required: false	    required: true
-  field:
-    description: 'Field that should be updated'
+name: 'Deploy Ghost Theme'
+description: 'Build & deploy a theme to your Ghost site'
+branding:
+  icon: 'cloud-lightning'
+  color: 'gray-dark'
+inputs:
+  api-url:
+    description: 'Ghost Admin API Url'
     required: true
-  value:
-    description: 'Value the field will be updated to'
+  api-key:
+    description: 'Ghost Admin API Key'
     required: true
-  days:
-    description: 'Number of days after published to update the post'
-    required: true
-runs:	runs:
-  using: 'node12'	  using: 'node12'
+  exclude:
+    description: 'Files or folders to exclude (space-separated list)'
+    required: false
+  theme-name:
+    description: 'A custom theme name that overrides the default name in package.json'
+    required: false
+  file:
+    description: 'Path to a built zip file. If this is included, the `exclude`, `string`, and `theme-name` options are ignored'
+    required: false
+runs:
+  using: 'node12'
   main: 'dist/index.js'
