@@ -12,7 +12,7 @@
         "posts_per_page": 8
     },
     "devDependencies": {
-        "@actions/core": "1.1.2",
+        "@actions/core": "1.2.6",
         "@tryghost/admin-api": "0.5.4",
         "gscan": "2.9.0"
     },
