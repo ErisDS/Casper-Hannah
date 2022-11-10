@@ -6,9 +6,9 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
       - name: Cache node modules
         uses: actions/cache@v1
         with:
@@ -21,13 +21,13 @@ jobs:
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 16
       - run: npm install
       - name: Run gscan
         run: |
           npm i -g gscan@latest
           gscan --fatal --verbose $GITHUB_WORKSPACE
-      - uses: ./.github/actions/test
+      - uses: TryGhost/action-deploy-theme@v1
         with:
           api-url: ${{ secrets.STG_GHOST_ADMIN_API_URL }}
           api-key: ${{ secrets.STG_GHOST_ADMIN_API_KEY }}
